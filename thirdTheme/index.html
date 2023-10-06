@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;200;300;400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+  <title>Frontend Mentor | Calculator app</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    .shadow-box {
+      box-shadow: 0px 3px 0px hsl(290, 70%, 36%);
+    }
+
+    .style-del {
+      background-color: hsl(281, 89%, 26%);
+    }
+
+    .style-reset {
+      background-color: hsl(281, 89%, 26%);
+    }
+
+    .style-egal {
+      background-color: hsl(177, 92%, 70%); 
+      box-shadow: 0px 3px 0px hsla(177, 92%, 70%, 0.5);
+    }
+
+    .style-egal-without {
+      background-color: hsl(176, 100%, 44%);
+    }
+
+    .bg-key-calculator {
+      background-color: hsl(268, 71%, 12%);
+    }
+
+    .bg-screen {
+      background-color: hsl(268, 71%, 12%);
+    }
+
+    .bg-body {
+      background-color: hsl(268, 75%, 9%);
+    }
+
+    .p-body {
+      padding: 0;
+    }
+
+    .m-body {
+      margin: 0;
+    }
+
+    .font-body {
+      font-family: 'League Spartan', sans-serif;
+    }
+
+    .text-yellow-light {
+      color: hsl(52, 100%, 62%);
+    }
+
+    .bg-very-dark-violet {
+      background-color: hsl(268, 47%, 21%);
+    }
+
+    .bg-soft-cyan {
+      background-color: hsla(268, 47%, 21%, 0.8);
+    }
+  </style>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+</head>
+<body class="w-360 font-bold bg-body p-body m-body font-body">
+  <!-- En-tête -->
+  <div class="pl-[850px] pt-[20px]">
+    <span class="text-yellow-light text-sm">1</span>
+    <span class="text-yellow-light text-sm">2</span>
+    <span class="text-yellow-light text-sm">3</span>
+  </div>
+  <div class="flex pl-[480px] pb-3.5">
+    <p class="text-yellow-light pr-[280px] text-base">calc</p>
+    <p class="text-yellow-light text-xs pr-[26px]">THEME</p>
+    <div class="pl-[30px] pr-[1px] mb-[12px] rounded-xl bg-screen"></div>
+    <div class="style-egal-without pl-[10px] mb-[14px] rounded-full ml-[-28px] mt-[2px]"></div>
+  </div>
+
+  <!--Fonds d'écran de la calculatrice-->
+  <div class="pt-[22px] pb-[22px] ml-[480px] mr-[485px] pr-[12px] rounded-md mb-3.5 bg-screen overflow-x-scroll text-yellow-light" id="screen" style="text-align: right; font-size: 30px;">0</div>
+
+  <!--Clavier de la calculatrice-->
+  <div class="ml-[480px] mr-[485px] rounded-md mb-8 bg-key-calculator">
+    
+    <!--Touches du clavier-->
+    <div class="grid grid-cols-4 pt-8 gap-4 pl-8 pr-8">
+      <button class="bg-very-dark-violet p-2.5 rounded-md font-bold text-2xl hover:bg-violet-600 shadow-box text-yellow-light" id="button7" onclick="onclickSevenKey()">7</button>
+      <button class="bg-very-dark-violet rounded-md text-2xl hover:bg-violet-600 shadow-box text-yellow-light" onclick="onclickEightKey()">8</button>
+      <button class="bg-very-dark-violet rounded-md text-2xl hover:bg-violet-600 shadow-box text-yellow-light" onclick="onclickNineKey()">9</button>
+      <button class="text-white rounded-md text-2xl style-del shadow-box" onclick="onclickDelKey()">DEL</button>
+    </div>
+    <div class="grid grid-cols-4 pt-8 gap-4 pl-8 pr-8">
+      <button class="bg-very-dark-violet p-2.5 rounded-md text-2xl hover:bg-violet-600 shadow-box text-yellow-light" onclick="onclickFourKey()">4</button>
+      <button class="bg-very-dark-violet rounded-md text-2xl hover:bg-violet-600 shadow-box text-yellow-light" onclick="onclickFiveKey()">5</button>
+      <button class="bg-very-dark-violet rounded-md text-2xl hover:bg-violet-600 shadow-box text-yellow-light" onclick="onclickSixKey()">6</button>
+      <button class="bg-very-dark-violet rounded-md text-2xl hover:bg-violet-600 shadow-box text-yellow-light" onclick="onclickPlusKey()">+</button>
+    </div>
+    <div class="grid grid-cols-4 pt-8 gap-4 pl-8 pr-8">
+      <button class="bg-very-dark-violet p-2.5 rounded-md text-2xl hover:bg-violet-600 shadow-box text-yellow-light" onclick="onclickOneKey()">1</button>
+      <button class="bg-very-dark-violet rounded-md text-2xl hover:bg-violet-600 shadow-box text-yellow-light" onclick="onclickTwoKey()">2</button>
+      <button class="bg-very-dark-violet rounded-md text-2xl hover:bg-violet-600 shadow-box text-yellow-light" onclick="onclickThreeKey()">3</button>
+      <button class="bg-very-dark-violet rounded-md text-2xl hover:bg-violet-600 shadow-box text-yellow-light" onclick="onclickMinusKey()">-</button>
+    </div>
+    <div class="grid grid-cols-4 pt-8 gap-4 pl-8 pr-8">
+      <button class="bg-very-dark-violet p-2.5 rounded-md text-2xl hover:bg-violet-600 shadow-box text-yellow-light" onclick="onclickPointKey()">.</button>
+      <button class="bg-very-dark-violet rounded-md text-2xl hover:bg-violet-600 shadow-box text-yellow-light" onclick="onclickZeroKey()">0</button>
+      <button class="bg-very-dark-violet rounded-md text-2xl hover:bg-violet-600 shadow-box text-yellow-light" onclick="onclickDivisionKey()">/</button>
+      <button class="bg-very-dark-violet rounded-md text-2xl hover:bg-violet-600 shadow-box text-yellow-light" onclick="onclickMultiplicationKey()">x</button>
+    </div>
+    <div class="grid grid-cols-2 pt-8 gap-4 pl-8 pr-8 pb-8">
+      <button class="text-white p-2.5 rounded-md text-2xl style-reset shadow-box" onclick="onclickResetKey()">RESET</button>
+      <button class="text-black rounded-md text-2xl style-egal" onclick="onclickEqualKey()">=</button>
+    </div>
+  </div>
+  
+  <!--Pieds de page-->
+  <div style="font-size: 11px; text-align: center;">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" style="color: hsl(228, 45%, 44%);" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">SOGAN Carmen</a>.
+  </div>
+
+  <script src="../firstTheme/script.js"></script>
+</body>
+</html>
