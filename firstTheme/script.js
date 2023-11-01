@@ -71,17 +71,17 @@ function onclickEqualKey() {
 
 function onclickDelKey() {
     let textOfScreen = screenCalculator.textContent;
-    if(textOfScreen == '0'){
-        return 0;
+    if (textOfScreen == '0') {
+        return;
     }
-    else if(textOfScreen.length == 1) {
+    else if (textOfScreen.length == 1) {
         screenCalculator.innerHTML = '0';
-        return 0;
+        return;
     }
-    screenCalculator.innerHTML = textOfScreen.replace(textOfScreen[textOfScreen.length - 1], ""); 
+    screenCalculator.innerHTML = textOfScreen.replace(textOfScreen[textOfScreen.length - 1], "");
 }
 
-addEventListener("keydown",(evt)=>{
+addEventListener("keydown", (evt) => {
     let codeKey = evt.keyCode;
 
     switch (codeKey) {
@@ -92,7 +92,7 @@ addEventListener("keydown",(evt)=>{
         case 98:
             onclickTwoKey();
             break;
-        
+
         case 99:
             onclickThreeKey();
             break;
@@ -152,7 +152,7 @@ addEventListener("keydown",(evt)=>{
         case 96:
             onclickZeroKey();
             break;
-    
+
         default:
             break;
     }
